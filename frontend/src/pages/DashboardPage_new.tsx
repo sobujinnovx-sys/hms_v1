@@ -82,7 +82,7 @@ const StatCard: React.FC<{
 
 export const DashboardPage: React.FC = () => {
   const { user } = useAuthStore();
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     totalPatients: 512,
     totalDoctors: 48,
     appointments: 245,

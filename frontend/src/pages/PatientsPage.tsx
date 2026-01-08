@@ -18,7 +18,7 @@ import {
   DialogActions,
 } from '@mui/material';
 import api from '@services/api';
-import type { Patient } from '@types/index';
+import { Patient } from '@types/index';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 

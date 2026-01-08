@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
   Typography,
-  Button,
   Box,
   Menu,
   MenuItem,
@@ -14,7 +13,6 @@ import { useAuthStore } from '@stores/authStore';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { user, logout, fetchUser } = useAuthStore();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
