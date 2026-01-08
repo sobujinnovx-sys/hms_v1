@@ -1,0 +1,8 @@
+# Healthcare Management System - Root requirements file for deployment platforms
+# The actual application requirements are in backend/requirements.txt
+
+# This file ensures deployment platforms recognize this as a Python project
+# and directs them to the backend directory for the actual dependencies
+
+-r backend/requirements.txt
+
