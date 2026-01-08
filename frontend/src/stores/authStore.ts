@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { User } from '@types/index';
+import type { User } from '@types/index';
 import api from '@services/api';
 
 interface AuthStore {
@@ -10,7 +10,7 @@ interface AuthStore {
   error: string | null;
   
   login: (email: string, password: string) => Promise<void>;
-  register: (data: any) => Promise<void>;
+  register: (email: string, username: string, full_name: string, password: string) => Promise<void>;
   logout: () => void;
   fetchUser: () => Promise<void>;
   setUser: (user: User | null) => void;

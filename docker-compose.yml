@@ -2,7 +2,22 @@ version: '3.8'
 
 services:
   mysql:
-    # as defined above
+    image: mysql:8.0
+    container_name: healthcare_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: healthcare_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     build:

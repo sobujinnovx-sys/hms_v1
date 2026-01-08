@@ -18,7 +18,7 @@ import {
   DialogActions,
 } from '@mui/material';
 import api from '@services/api';
-import { Patient } from '@types/index';
+import type { Patient } from '@types/index';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -36,7 +36,22 @@ export const PatientsPage: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
 
-  const formik = useFormik({
+  const formik = useFormik<{
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string;
+    date_of_birth: string;
+    gender: string;
+    address: string;
+    city: string;
+    state: string;
+    zip_code: string;
+    blood_type: string;
+    allergies: string;
+    emergency_contact_name: string;
+    emergency_contact_phone: string;
+  }>({
     initialValues: {
       first_name: '',
       last_name: '',
@@ -88,7 +103,22 @@ export const PatientsPage: React.FC = () => {
   const handleOpen = (patient?: Patient) => {
     if (patient) {
       setEditingId(patient.id);
-      formik.setValues(patient);
+      formik.setValues({
+        first_name: patient.first_name,
+        last_name: patient.last_name,
+        email: patient.email || '',
+        phone: patient.phone || '',
+        date_of_birth: patient.date_of_birth,
+        gender: patient.gender,
+        address: patient.address || '',
+        city: patient.city || '',
+        state: patient.state || '',
+        zip_code: patient.zip_code || '',
+        blood_type: patient.blood_type || '',
+        allergies: patient.allergies || '',
+        emergency_contact_name: patient.emergency_contact_name || '',
+        emergency_contact_phone: patient.emergency_contact_phone || '',
+      });
     } else {
       setEditingId(null);
       formik.resetForm();
